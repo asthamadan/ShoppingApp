@@ -96,4 +96,4 @@ pipeline {
             sh 'docker rmi ${DOCKER_REGISTRY}/${IMAGE_NAME} || true'
         }
     }
-}
+
