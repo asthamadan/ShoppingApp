@@ -1,10 +1,10 @@
 name : Build new app-ShoppingApp
-runs-on: unbuntu-latest
 on:
    workflow_dispatch:
 jobs:
   job1:
-     steps:
+   runs-on: ubuntu-latest
+   steps:
        - name: clone the repo
          uses: actions/checkout@v4
        - name: Install nodejs
