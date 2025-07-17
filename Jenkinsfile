@@ -16,21 +16,7 @@ pipeline {
                 git branch: "${env.BRANCH_NAME}", credentialsId: 'github-credentials-id', url: 'https://github.com/asthamadan/ShoppingApp.git'
             }
         }
-        stage('Set Pending Status') {
-            when {
-                anyOf { branch 'main'; branch 'develop' }
-            }
-            steps {
-                script {
-                    sh """
-                        curl -X POST -H 'Accept: application/vnd.github+json' \
-                        -H 'Authorization: Bearer ${GITHUB_TOKEN}' \
-                        -H 'X-GitHub-Api-Version: 2022-11-28' \
-                        https://api.github.com/repos/asthamadan/Jenkins-Multibranch-Pipeline/statuses/${env.GIT_COMMIT} \
-                        -d '{"state":"pending","context":"ci/jenkins","description":"Build started","target_url":"${env.BUILD_URL}"}'
-                    """
-                }
-            }
+                     
         }
         stage('Build') {
             steps {
