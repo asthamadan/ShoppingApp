@@ -10,5 +10,6 @@ WORKDIR /app
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/index.js ./
+COPY --from=builder /app/index.test.js ./
 EXPOSE 3000
 CMD ["npm", "start"]
