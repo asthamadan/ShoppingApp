@@ -1,0 +1,29 @@
+name : Build new app-ShoppingApp
+on:
+   workflow_dispatch:
+jobs:
+  job1:
+    runs-on: unbuntu-latest
+    steps:
+       - name: clone the repo
+         uses: actions/checkout@v4
+       - name: Install nodejs
+         uses: actions/setup-node@v4
+         with:
+           node-version: 18
+           cache: 'npm'
+
+       - name: Install dependencies
+         run: npm ci
+
+       - name: Show available scripts (for debugging)
+         run: npm run
+
+       - name: Execute test cases
+         run: npm test
+
+       - name: Build application
+         run: npm run Build
+
+       - name: Deploy the code
+         run: echo "code has been deployed"
